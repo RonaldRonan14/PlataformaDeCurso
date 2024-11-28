@@ -1,0 +1,36 @@
+.main-login {
+    height: 100vh;
+    background-color: var(--main-bg-color);
+}
+
+.form-login {
+    background-color: white;
+    /* padding: 1.5rem; */
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25rem;
+}
+
+.border-input {
+    border: 3px solid var(--main-bg-color);
+    border-radius: .5rem;
+}
+
+.login-img-pessoa {
+    width: 1.5rem;
+}
+
+.login-button-password {
+    background-color: transparent;
+    background-image: url("/wwwroot/img/icons-closed-eye.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    width: 1.5rem;
+}
+
+.login-h1-titulo {
+    font-weight: bold;
+}

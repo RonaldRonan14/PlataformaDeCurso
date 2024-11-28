@@ -1,0 +1,53 @@
+.header-deslogado {
+    padding: 1rem 3rem;
+    background-color: var(--header-bg-color-0);
+    min-width: 40rem;
+    height: 3.5rem;
+}
+
+.header-deslogado a {
+    background-color: var(--header-button-bg-color-0);
+    border-radius: 0.8rem;
+    white-space: nowrap;
+    height: min-content;
+    padding: .3rem 1.5rem;
+}
+
+.header-deslogado a:hover {
+    background-color: var(--header-button-bg-color-hover-0);
+}
+
+.header-deslogado input {
+    border-radius: 0.8rem;
+}
+
+.header-deslogado span {
+    background-color: white !important;
+}
+
+.deslogado-img-pesquisar {
+    width: 1.5rem;
+}
+
+.a-header-deslogado {
+    width: 2rem;
+}
+
+.a-header-deslogado img {
+    width: 100%;
+}
+
+.btn-home-deslogado {
+    background-color: white !important;
+    height: 2rem !important;
+    width: 3rem;
+    padding: 0 !important;
+}
+
+.input-home-deslogado {
+    height: 2rem;
+}
+
+.deslogado-img-pessoa {
+    width: 2.5rem;
+}

@@ -1,0 +1,42 @@
+.main-cadastro {
+    height: 100vh;
+    background-color: var(--main-bg-color);
+}
+
+.form-cadastro {
+    background-color: white;
+    /* padding: 1.5rem; */
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.border-input {
+    border: 3px solid var(--main-bg-color);
+    border-radius: .5rem;
+}
+
+.cadastro-img-pessoa {
+    width: 1.5rem;
+}
+
+.cadastro-button-password {
+    background-color: transparent;
+    background-image: url("/wwwroot/img/icons-closed-eye.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    width: 1.5rem;
+}
+
+.cadastro-h1-titulo {
+    font-weight: bold;
+}
+
+.Cadastrese-text-color {
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--text-input-color);
+}

@@ -1,0 +1,33 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="main-cards-all-cursos">
+    <div class="row">
+        {% if cursos %}
+            {% for curso in cursos %}
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between">
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <img class="card-curso-all-img" src="{{ url_for('static', filename=curso.CapaPath) }}" alt="">
+                                </div>
+                                <div>
+                                    <a href="{{ url_for('curso_blueprint.index', curso_id=curso.CursoId) }}">
+                                        <h5 class="card-title">{{ curso.Nome }}</h5>
+                                    </a>
+                                    <span>Data criação: 04/10/2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        <div>
+            Curso não encontrado!
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

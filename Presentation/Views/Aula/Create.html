@@ -1,0 +1,16 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="container m-3">
+    <form action="{{ url_for('aula_blueprint.add_aula', curso_id=curso_id) }}" method="post" enctype="multipart/form-data">
+        <input type="file" class="form-control mb-2" accept="video/*" name="video_aula">
+        <input class="form-control mb-2" type="text" placeholder="Nome da aula" required name="nome_aula">
+        <textarea class="form-control" name="descricao_aula" cols="30" rows="5" placeholder="Descrição da aula"></textarea>
+        <textarea class="form-control mt-2" name="complemento_aula" cols="30" rows="10" placeholder="Complemento"></textarea>
+        <div class="d-flex">
+            <a href="{{ url_for('curso_blueprint.index', curso_id=curso_id) }}" class="btn btn-default mt-2 me-3">Voltar</a>
+            <button class="btn btn-default mt-2">Salvar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

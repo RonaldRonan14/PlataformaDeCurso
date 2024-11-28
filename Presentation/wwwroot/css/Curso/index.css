@@ -1,0 +1,19 @@
+.imagem-container {
+    position: relative;
+    display: inline-block;
+}
+
+.imagem-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, transparent 90%, white), 
+                linear-gradient(to bottom, transparent 90%, white);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    pointer-events: none;
+}

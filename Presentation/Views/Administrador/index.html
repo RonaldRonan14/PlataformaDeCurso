@@ -1,0 +1,41 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="container mt-3" style="background-color: #ffffff;">
+    <div>
+        <h5 style="border-bottom: 2px solid;">Administradores</h5>
+        <a href="{{ url_for('administrador_blueprint.create') }}">Novo administrador</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Cpf</th>
+                <th scope="col">Nome</th>
+                <th scope="col" class="w-75">Email</th>
+                <th scope="col" class="w-25">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if administradores %}
+                {% for admin in administradores %}
+                    <tr>
+                        <td scope="row">{{ admin.Cpf }}</td>
+                        <td style="white-space: nowrap;">{{ admin.Nome }}</td>
+                        <td>{{ admin.Email }}</td>
+                        <td>
+                            <a href="{{ url_for('administrador_blueprint.update', cpf=admin.Cpf) }}" class="btn btn-primary">Editar</a>
+                            {% if admin.Cpf != '00000000000' %}
+                                <a href="{{ url_for('administrador_blueprint.delete', cpf=admin.Cpf) }}" class="btn btn-danger">Excluir</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <th colspan="4">Sem administradores</th>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

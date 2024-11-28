@@ -1,0 +1,20 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="container m-3" style="background-color: #ffffff;">
+    <div class="d-flex align-items-center">
+        <a href="{{ url_for('curso_blueprint.index', curso_id=aula.CursoId) }}">
+            <img style="width: 2rem;" class="me-2" src="{{ url_for('static', filename='img/icons-back.png') }}" alt="">
+        </a>
+        <h1>{{ curso.Nome }}</h1>
+    </div>
+    <h4>{{ aula.Nome }}</h4>
+    <video style="border-radius: 1rem;" controlslist="nodownload" controls class="w-100">
+        <source src="{{ url_for('static', filename=aula.VideoPath) }}" type="video/mp4">
+    </video>
+    <h5>Descrição</h5>
+    <p>{{ aula.Descricao }}</p>
+    <h5>Complemento</h5>
+    <p>{{ aula.Complemento }}</p>
+</div>
+{% endblock %}

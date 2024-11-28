@@ -1,0 +1,26 @@
+.main-cards-all-cursos {
+    width: 100%;
+    padding: 1rem 3rem;
+    overflow-y: auto;
+}
+
+.card-curso-all-img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: .5px solid var(--main-bg-color-1);
+    margin-right: 1rem;
+}
+
+.card-curso-all-img-icons {
+    width: 1.3rem;
+    margin-right: .3rem;
+}
+
+.btn-novo-curso {
+    background-color: white;
+}
+
+.btn-novo-curso:hover {
+    background-color: var(--button-color-0);
+}

@@ -1,0 +1,29 @@
+.main-perfil {
+    height: calc(100% - 3.5rem);
+    width: 100%;
+}
+
+.container-principal {
+    background-color: #ffffff;
+    border-radius: 1rem;
+}
+
+.btn-nome-perfil {
+    background-color: white !important;
+    height: 2.5 !important;
+    width: 3rem;
+    padding: 0 !important;
+}
+
+.img-editar-nome-perfil {
+    width: 1.5rem;
+}
+
+.btn-perfil {
+    background-color: #ffffff;
+    width: 8rem;
+}
+
+.btn-perfil:hover {
+    background-color: var(--button-color-0) !important;
+}

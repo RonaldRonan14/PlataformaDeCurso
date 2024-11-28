@@ -1,0 +1,32 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="main-cards-cursos w-100">
+    <div id="carouselFavoritos" class="carousel slide group-cards px-3 pt-3 mb-3" data-bs-ride="carousel">
+        <h4 class="titulo-cards">Favoritos</h4>
+        <div class="carousel-inner p-1">
+            {% set chunk_size = 6 %}
+            {% for chunk in cursos_favoritos|batch(chunk_size) %}
+            <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                <div class="row">
+                    {% for curso in chunk %}
+                    <div class="col-sm-2">
+                        <a href="{{ url_for('curso_blueprint.index', curso_id=curso.CursoId) }}">
+                            <img class="card-curso-img" src="{{ url_for('static', filename=curso.CapaPath) }}" alt="{{ curso.Nome }}">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="carousel-indicators">
+            {% for i in range(cursos_favoritos|length // chunk_size + (1 if cursos_favoritos|length % chunk_size else 0)) %}
+            <button type="button" data-bs-target="#carouselFavoritos" data-bs-slide-to="{{ i }}" 
+                    class="{% if i == 0 %}active{% endif %}" aria-label="Slide {{ i + 1 }}"></button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

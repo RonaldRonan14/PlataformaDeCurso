@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cosoar</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/Global.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/LoginUser/cadastrar_user.css') }}">
+    </head>
+    <body>
+        <main class="main-cadastro d-flex align-items-center justify-content-center">
+            <form action="{{ url_for('login_user_blueprint.cadastrar_user') }}" method="post" class="form-cadastro p-4">
+                <h1 class="text-danger mb-3 cadastro-h1-titulo">Cadastra-se</h1>
+                <div class="input-group mb-3 border-input">
+                    <span class="input-group-text">
+                        <img src="{{ url_for('static', filename='img/icons-person-2.png') }}" alt="" class="cadastro-img-pessoa"></span>
+                    <input type="text" class="form-control" placeholder="Digite seu nome completo" name="nome_completo" autocomplete="off">
+                </div>
+                <div class="input-group mb-3 border-input">
+                    <span class="input-group-text Cadastrese-text-color">CPF</span>
+                    <input type="text" class="form-control" placeholder="Digite seu cpf" name="cpf" autocomplete="off">
+                </div>
+                <div class="input-group mb-3 border-input">
+                    <span class="input-group-text">
+                        <img src="{{ url_for('static', filename='img/icons-email.png') }}" alt="" class="cadastro-img-pessoa"></span>
+                    <input type="text" class="form-control" placeholder="Digite seu email" name="email" autocomplete="off">
+                </div>
+                <div class="input-group mb-3 border-input">
+                    <span class="input-group-text">
+                        <img src="{{ url_for('static', filename='img/icons-password-key.png') }}" alt="" class="cadastro-img-pessoa">
+                    </span>
+                    <input id="cadastro-input-password-1" type="password" class="form-control" placeholder="Digite seu senha" name="password" autocomplete="off">
+                    <span class="input-group-text">
+                        <button id="cadastro-button-password-1" class="cadastro-button-password h-100" type="button" onclick="verSenha(1)"></button>
+                    </span>
+                </div>
+                <div class="input-group mb-3 border-input">
+                    <span class="input-group-text">
+                        <img src="{{ url_for('static', filename='img/icons-password-key.png') }}" alt="" class="cadastro-img-pessoa">
+                    </span>
+                    <input id="cadastro-input-password-2" type="password" class="form-control" placeholder="Confirme seu senha" autocomplete="off">
+                    <span class="input-group-text">
+                        <button id="cadastro-button-password-2" class="cadastro-button-password h-100" type="button" onclick="verSenha(2)"></button>
+                    </span>
+                </div> 
+                <button class="btn btn-danger mb-2">Cadastra-se</button>
+                <a class="text-center" href="{{ url_for('login_user_blueprint.index') }}">Voltar</a>
+            </form>
+        </main>
+        <img src="{{ url_for('static', filename='img/icons-closed-eye.png') }}" alt="" hidden>
+        <script src="{{ url_for('static', filename='js/LoginUser/cadastrar_user.js') }}"></script>
+    </body>
+</html>

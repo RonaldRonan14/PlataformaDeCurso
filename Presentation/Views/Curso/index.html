@@ -1,0 +1,108 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="container mt-3" style="background-color: #ffffff; padding: 0;">
+    <div class="d-flex flex-row">
+        <div class="col-4 me-3 d-flex flex-column">
+            <div class="imagem-container">
+                <img style="width: 100%; height: 25rem; border-radius: 1rem;" src="{{ url_for('static', filename=curso.CapaPath) }}" alt="">
+            </div>
+            {% if session['TipoUsuario'] == 'admin' %}
+                <form action="{{ url_for('curso_blueprint.desativar_curso', curso_id=curso.CursoId) }}" method="post" class="d-flex">
+                    <input type="number" name="curso_id" hidden>
+                    <button class="btn btn-danger mt-3" type="submit" style="
+                width: min-content;
+                min-width: 10rem;
+                margin: auto;">Desativar Curso</button>
+                </form>
+            {% endif %}
+        </div>
+        <div class="w-100 d-flex flex-column justify-content-between">
+            <div>
+                <div class="borda-pontilhada me-3 mt-3 d-flex flex-row">
+                    <div class="w-100">
+                        <h4>{{ curso.Nome }}</h4>
+                        <p>{{ curso.Descricao }}</p>
+                    </div>
+                    {% if session['TipoUsuario'] == 'admin' %}
+                        <div>
+                            <a href="{{ url_for('curso_blueprint.update_curso', curso_id=curso.CursoId) }}">
+                                <img class="card-curso-all-img-icons" src="{{ url_for('static', filename='img/icons-edit.png') }}" alt="">
+                            </a>
+                        </div>
+                    {% else %}
+                        <div>
+                            <a href="{{ url_for('curso_blueprint.favoritar_curso', curso_id=curso.CursoId) }}">
+                                <img style="width: 2rem;" class="card-curso-all-img-icons"
+                                src="{% if not favorito %} {{ url_for('static', filename='img/icons-heart.png') }} {% else %} {{ url_for('static', filename='img/icons-heart-1.png') }} {% endif %}" alt="">
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mt-3">
+                    <div class="d-flex align-items-center">
+                        <img style="width: 1rem;" class="me-1" src="{{ url_for('static', filename='img/icons-hour.png') }}" alt="">
+                        <p class="mb-0">Duração: {{ duracao_total }}</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img style="width: 1rem;" class="me-1" src="{{ url_for('static', filename='img/icons-date.png') }}" alt="">
+                        <p class="mb-0">Ultima publicação: 
+                            {% if ultima_publicacao %}
+                                {{ ultima_publicacao.strftime('%d/%m/%Y') }}
+                            {% else %}
+                                Nenhuma aula publicada
+                            {% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="borda-pontilhada" style="padding: 0;margin: 1.5rem;"></div>
+    <div>
+        <div class="d-flex justify-content-center align-items-center">
+            <h4 class="text-danger mb-0">Aulas</h4>
+            {% if session['TipoUsuario'] == 'admin' %}
+                <a class="ms-3 btn btn-danger" href="{{ url_for('aula_blueprint.add_aula', curso_id=curso.CursoId) }}">Adicionar</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="m-3 row">
+        {% if aulas %}
+            {% for aula in aulas %}
+                <div class="col-sm-4 mb-3">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between">
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <img src="{{ url_for('static', filename='img/icons-play.png') }}" alt="">
+                                </div>
+                                <div>
+                                    <a href="{{ url_for('aula_blueprint.index', aula_id=aula.AulaId) }}">
+                                        <h5 class="card-title">{{ aula.Nome }}</h5>
+                                    </a>
+                                    <span class="d-flex align-items-center">
+                                        <img class="card-curso-all-img-icons" src="{{ url_for('static', filename='img/icons-hour.png') }}" alt="">
+                                        <span>{{ aula.Duracao|round(2) }} min</span>
+                                    </span>
+                                    <span>Data criação: {{ aula.DataPublicacao.strftime('%d/%m/%Y') }}</span>
+                                </div>
+                            </div>
+                            {% if session['TipoUsuario'] == 'admin' %}
+                                <div>
+                                    <a href="">
+                                        <img class="card-curso-all-img-icons" src="{{ url_for('static', filename='img/icons-edit.png') }}" alt="">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-danger m-3 text-center">
+                Nenhuma aula registrada
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

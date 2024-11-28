@@ -1,0 +1,26 @@
+{% extends "Shared/header_logado.html" %}
+
+{% block content %}
+<div class="container m-3">
+    {% if curso %}
+    <form action="{{ url_for('curso_blueprint.update_curso', curso_id=curso.CursoId) }}" method="post" enctype="multipart/form-data">
+        <div class="d-flex flex-row">
+            <div class="col-4 me-2">
+                <input type="file" class="form-control mb-2" accept="image/*" name="capa_curso">
+                <img style="width: 100%; border-radius: 0.5rem; height: 23rem; background-color: white;" src="{{ url_for('static', filename=curso.CapaPath) }}" alt="">
+            </div>
+            <div class="col-8">
+                <input class="form-control mb-2" type="text" placeholder="Nome do curso" required name="nome_cusro" value="{{ curso.Nome }}">
+                <textarea style="height: calc(100% - 3rem);" class="form-control" name="descricao_curso" id="" placeholder="Descrição do curso">{{ curso.Descricao }}</textarea>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <a class="btn btn-default mt-2 me-2" href="{{ url_for('curso_blueprint.index', curso_id=curso.CursoId) }}">Cancelar</a>
+            <button class="btn btn-default mt-2">Salvar</button>
+        </div>
+    </form>
+    {% else %}
+        <a class="btn btn-default mt-2 me-2" href="{{ url_for('home_admin_blueprint.index') }}">Cancelar</a>
+    {% endif %}
+</div>
+{% endblock %}
